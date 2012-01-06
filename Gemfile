@@ -1,11 +1,8 @@
 source :gemcutter
 gem "sinatra"
 gem "sinatra-reloader"
-gem "dm-core"
-gem "dm-mysql-adapter"
-gem "dm-postgres-adapter"
-gem "dm-migrations"
-gem "mysql"
+
+gem "heroku"
 
 # bundler requires these gems in all environments
 gem 'haml'
