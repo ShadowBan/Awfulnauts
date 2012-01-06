@@ -9,6 +9,10 @@ get '/' do
   haml :index
 end
 
+get '/error' do
+  raise
+end
+
 #Give URL Page
 #get '/bonus/:tix' do
 #  @biturl = Biturl.first(:tix=>params[:tix])
