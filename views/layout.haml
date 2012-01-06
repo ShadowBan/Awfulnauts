@@ -1,0 +1,23 @@
+%html
+  %head
+    %link{:rel=>"shortcut icon", :href=>"/images/favicon.ico", :type=>"image/x-icon"}
+    %title 8BitURL
+    %link{:href=>"/stylesheets/8bitstyle-mario.css", :media=>"screen", :rel=>"stylesheet", :type=>"text/css"}
+  %body
+    %script{:type=>"text/javascript"}
+      var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-16854639-1']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
+    .wrap
+      .header
+        .logo
+          %img{:src=>"/images/logo.png"}
+      .screen
+        .container
+          = yield
+        .footer
+          .ads="ADS GO HERE" 
+    .bottom-decoration  
+      .copyright
+        %p
+          Copyright &copy; 2010, 8biturl. All rights reserved. 
+          %br
+          Designed and Developed by RubyAlchemist. 
