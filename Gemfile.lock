@@ -14,6 +14,7 @@ GEM
     launchy (2.0.5)
       addressable (~> 2.2.6)
     mime-types (1.17.2)
+    nokogiri (1.5.0)
     rack (1.4.0)
     rack-protection (1.2.0)
       rack
@@ -45,5 +46,6 @@ DEPENDENCIES
   dalli
   haml
   heroku
+  nokogiri
   sinatra
   sinatra-reloader
