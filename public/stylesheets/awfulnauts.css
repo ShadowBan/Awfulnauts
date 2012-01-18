@@ -20,7 +20,8 @@ body{
 
 .left{
   float:left;
-}
+}-
+g
 
 .right{
   float:right;
@@ -33,6 +34,7 @@ body{
 .header{
   width:100%;
   background: #A7DBD8;
+  font-weight: bold;
 }
 
 .logo{
