@@ -10,7 +10,7 @@ body{
 	height:100%;
 }
 
-.wrap{
+#wrap{
   margin: 0 auto;
   margin-bottom:35px;
   width:960px;
@@ -31,13 +31,13 @@ g
   clear:both;
 }
 
-.header{
+#header{
   width:100%;
   background: #A7DBD8;
   font-weight: bold;
 }
 
-.logo{
+#logo{
   margin: 0 auto;
   width:638px;
 } 
@@ -50,43 +50,28 @@ g
   //margin-top:250px;
 }
 
-.footer{
+#footer{
   margin: 0 auto;
   width:638px;
   background: #FFFFFF;
 }
 
-.screen{
-  padding-top:25px; 
-  width: 100%;
-  height: 638px;
-  background: #000000 url('/images/pong2.png') no-repeat;
+#header #top-nav{
+  background-color:#F38630;
 }
 
-.copyright{
-  margin: 0 auto;
-  width:638px;
-} 
-
-@font-face {
-  font-family: bit;
-  src: url("/fonts/fipps.ttf");
+#header #top-nav ul{
+  list-style:none;
 }
 
-.header_font{
-  font-family: bit;
-  font-size: 100px;
-  margin-top: 25px;
+#header #top-nav li{
+  float:left;
+  margin-right:25px;
 }
 
-.bottom-decoration{
-  position: fixed;
-  width: 100%;
-  height: 245px;
-  top: auto;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  //background: url('/images/level_hollow.png') repeat-x;
-  z-index:-1;
+#header #top-nav li a{
+  text-decoration:none;
+  font-weight:bold;
+  font-size:20px;
+  color:#000000;
 }

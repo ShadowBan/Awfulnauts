@@ -4,8 +4,8 @@
     %title Awfulnauts Guild
     %link{:href=>"/stylesheets/awfulnauts.css", :media=>"screen", :rel=>"stylesheet", :type=>"text/css"}
   %body
-    .header
-      .logo
+    #header
+      #logo
         %pre
           :preserve
                _____            _____     .__                        __          
@@ -14,8 +14,15 @@
             /    |    \     /  |  | |  |  /  |_|   |  \/ __ \|  |  /|  |  \___ \ 
             \____|__  /\/\_/   |__| |____/|____/___|  (____  /____/ |__| /____  >
                     \/                              \/     \/                 \/  
-    .wrap
-      .main-body
+      #top-nav
+        %ul
+          %li
+            %a{:href=>"http://www.turntable.fm/awfulnauts_swtor_guild",:target=>"_blank"}="Guild turntable"
+          %li
+            %a{:href=>"http://reddit.awfulnauts.com",:target=>"_blank"}="Guild Reddit"
+        .clear
+    #wrap
+      #main-body
         = yield
-      .footer
+      #footer
         .ads 
