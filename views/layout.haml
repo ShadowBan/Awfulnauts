@@ -4,10 +4,17 @@
     %title Awfulnauts Guild
     %link{:href=>"/stylesheets/awfulnauts.css", :media=>"screen", :rel=>"stylesheet", :type=>"text/css"}
   %body
+    .header
+      .logo
+        %pre
+          :preserve
+               _____            _____     .__                        __          
+              /  _  \__  _  ___/ ____\_ __|  |   ____ _____   __ ___/  |_  ______
+             /  /_\  \ \/ \/ /\   __\  |  \  |  /    \\__  \ |  |  \   __\/  ___/
+            /    |    \     /  |  | |  |  /  |_|   |  \/ __ \|  |  /|  |  \___ \ 
+            \____|__  /\/\_/   |__| |____/|____/___|  (____  /____/ |__| /____  >
+                    \/                              \/     \/                 \/  
     .wrap
-      .header
-        .logo
-          %img{:src=>"/images/logo.png"}
       .main-body
         = yield
       .footer

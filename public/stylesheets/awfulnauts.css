@@ -6,7 +6,7 @@ body{
 	border: none;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	background: #F9C500;
+	background: #E0E4CC;
 	height:100%;
 }
 
@@ -15,7 +15,7 @@ body{
   margin-bottom:35px;
   width:960px;
   min-height:500px;
-  background: #F9C500;
+  background: #E0E4CC;
 }
 
 .left{
@@ -32,7 +32,7 @@ body{
 
 .header{
   width:100%;
-  background: #F9C500;
+  background: #A7DBD8;
 }
 
 .logo{
