@@ -3,14 +3,44 @@ require 'open-uri'
 
 class Rss
 
-  def update_gamebreaker
-    settings.cache.set('gamebreaker', '')
+  #### Pod Casts ####
+  def self.update_gamebreaker
+    doc = Nokogiri::XML(open("http://feeds.feedburner.com/TheRepublic-TheStarWarsTheOldRepublicPodcast?format=xml"))
+    newest = doc.xpath('//item').first
+    data = {}
+    data[:title] = newest.xpath('title').text
+    data[:link] = newest.xpath('link').text
+    data[:image_url] = newest.xpath('blip:picture').text
+    data[:pubdate] = Date.parse(newest.xpath('pubDate').text).to_s rescue nil
+    settings.cache.set('gamebreaker', data, 3600)
+    data
   end
 
-  def get_gamebreaker
-    settings.cache.get('gamebreaker')
+  def self.get_gamebreaker
+    data = settings.cache.get('gamebreaker')
+    data = self.update_gamebreaker if data.nil?
+    data
   end
 
+  def self.update_darthhater_cast
+    doc = Nokogiri::XML(open("http://www.darthhater.com/articles/podcast.rss"))
+    newest = doc.xpath('//item').first
+    data = {}
+    data[:title] = newest.xpath('title').text
+    data[:link] = newest.xpath('link').text
+    data[:image_url] = doc.xpath('//image/url').text
+    data[:pubdate] = Date.parse(newest.xpath('pubDate').text).to_s rescue nil
+    settings.cache.set('darthhater_cast', data, 3600)
+    data
+  end
+
+  def self.get_darthhater_cast
+    data = settings.cache.get('darthhater_cast')
+    data = self.update_darthhater_cast if data.nil?
+    data
+  end
+
+  #### News Feeds ####
   def update_darthhater
     settings.cache.set('darthhater', '')
   end
@@ -18,6 +48,7 @@ class Rss
   def get_darthhater
     settings.cache.get('darthhater')
   end
+
 
   def update_devtracker
     settings.cache.set('devtracker', '')
@@ -51,31 +82,7 @@ class Rss
     settings.cache.get('swtor_reddit')
   end
 
-  def update_news
-  	update_gamebreaker
-  	update_darthhater
-  	update_devtracker
+  def expire_cache
+    settings.cache.flush
   end
-
-  def update_site_news
-    update_guild_twitter
-    update_guild_reddit
-  end
-
-  def update_reddit
-    update_guild_reddit
-    update_swtor_reddit
-  end
-
-  def update_all
-    update_gamebreaker
-    update_darthhater
-    update_devtracker
-    update_guild_twitter
-    update_guild_reddit
-    update_swtor_reddit
-  end
-
-
-
 end

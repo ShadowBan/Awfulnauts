@@ -6,6 +6,8 @@ layout :layout
 
 #Home Page
 get '/' do
+  @gamebreaker = Rss.get_gamebreaker
+  @darth_cast = Rss.get_darthhater_cast
   haml :index
 end
 
