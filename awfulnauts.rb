@@ -6,8 +6,16 @@ layout :layout
 
 #Home Page
 get '/' do
-  @gamebreaker = Rss.get_gamebreaker
-  @darth_cast = Rss.get_darthhater_cast
+#  @gamebreaker = Rss.get_gamebreaker
+#  @darth_cast = Rss.get_darthhater_cast
+
+  @gamebreaker = Rss.get_feed('gamebreaker')
+  @darth_cast = Rss.get_feed('darthhater_cast')
+  @darthhater = Rss.get_feed('darthhater')
+  @devtracker = Rss.get_feed('devtracker')
+  @guild_twitter = Rss.get_feed('guild_twitter')
+  @guild_reddit = Rss.get_feed('guild_reddit')
+  @swtor_reddit = Rss.get_feed('swtor_reddit')
   haml :index
 end
 
@@ -15,26 +23,7 @@ get '/error' do
   raise
 end
 
-#Give URL Page
-#get '/bonus/:tix' do
-#  @biturl = Biturl.first(:tix=>params[:tix])
-#  haml :bonus
-#end
-
-#Create a URL
-#post '/bonus' do
-#  url = params[:url] =~ /(^http:\/\/|^https:\/\/)/ ? params[:url] : "http://" + params[:url]
-#  @biturl = Biturl.first(:url=>url)
-#  if @biturl.nil?
-#    tix = Biturl.gen_ticket()
-#    @biturl = Biturl.create({:tix=>tix, :url=>url, :created_at=>Time.now})
-#  end
-#  redirect "/bonus/#{@biturl.tix}"
-#end
-
-#Bounce Page
-#get '/:tix' do
-#  tix = params[:tix]
-#  biturl = Biturl.first(:tix=>tix)
-#  redirect biturl.nil? ? "/" : biturl.url
-#end
+get '/expire' do
+  Rss.expire_cache
+  redirect '/'
+end

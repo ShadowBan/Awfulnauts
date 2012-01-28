@@ -24,12 +24,12 @@
       %a{:href=>@gamebreaker[:link]}
         %img{:src => @gamebreaker[:image_url]}
       %apan
-        ="Updated: #{@gamebreaker[:pubdate]}"
+        ="Updated: #{@gamebreaker[:last_update]} #{@gamebreaker[:last_update] > 1 ? 'days' : 'day'} ago"
     #darth-cast.cast.left
       %a{:href=>@darth_cast[:link]}
         %img{:src=>@darth_cast[:image_url]}
       %span
-        ="Updated: #{@darth_cast[:pubdate]}"
+        ="Updated: #{@darth_cast[:last_update]} #{@darth_cast[:last_update] > 1 ? 'days' : 'day'} ago"
     .clear
   .clear
     
