@@ -7,15 +7,20 @@
     #reddit.left.news
       %h1="Reddit"
     .clear
-  /
-    #game-news.left
-    %h1="Game News"
+
+  #game-news.left
     #darth.left.news
       %h1="Darthhater"
-    #devtracker.left.news
+      %ul
+        - @darthhater.each do |n|
+          %li
+            %a{:href=>n[:url]}= n[:title]
+    #dev.right.news
       %h1="Dev Tracker"
-    #swtor-reddit.left.news
-      %h1="SWTOR Reddit"
+      %ul
+        -@devtracker[0..9].each do |n|
+          %li
+            %a{:href=>n[:url]}= n[:title]
     .clear
 
   #podcasts.right

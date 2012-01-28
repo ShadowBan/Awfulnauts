@@ -32,11 +32,31 @@ class Rss
 
   #### News Feeds ####
   def self.update_darthhater
-    settings.cache.set('darthhater', '')
+    doc = Nokogiri::XML(open("http://www.darthhater.com/articles.rss"))
+    items = doc.xpath('//item')
+    pfeed = []
+    items.each do |item|
+      data = {} 
+      data[:title] = item.xpath('title').text
+      data[:url] = item.xpath('link').text
+      pfeed << data
+    end
+    settings.cache.set('darthhater', pfeed)
+    pfeed
   end
 
   def self.update_devtracker
-    settings.cache.set('devtracker', '')
+    doc = Nokogiri::XML(open("http://www.darthhater.com/devtracker.rss"))
+    items = doc.xpath('//item')
+    pfeed = []
+    items.each do |item|
+      data = {} 
+      data[:title] = item.xpath('title').text
+      data[:url] = item.xpath('link').text
+      pfeed << data
+    end
+    settings.cache.set('devtracker', pfeed)
+    pfeed
   end
 
   def self.update_guild_twitter
