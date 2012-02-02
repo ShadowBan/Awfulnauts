@@ -41,7 +41,7 @@ class Rss
       data[:url] = item.xpath('link').text
       pfeed << data
     end
-    settings.cache.set('darthhater', pfeed)
+    settings.cache.set('darthhater', pfeed, 3600)
     pfeed
   end
 
@@ -55,7 +55,7 @@ class Rss
       data[:url] = item.xpath('link').text
       pfeed << data
     end
-    settings.cache.set('devtracker', pfeed)
+    settings.cache.set('devtracker', pfeed, 3600)
     pfeed
   end
 
