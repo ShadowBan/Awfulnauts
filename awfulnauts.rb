@@ -23,6 +23,10 @@ get '/error' do
   raise
 end
 
+get '/photo-test' do
+  haml :slideshow
+end
+
 get '/expire' do
   Rss.expire_cache
   redirect '/'
