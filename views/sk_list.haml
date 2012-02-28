@@ -12,12 +12,12 @@
       Roll List: 
       %a{:href=>"/sk/list/#{@list_id}/#{@owner_id}/roll"}= "http://www.awfulnauts.com/sk/list/#{@list_id}/#{@owner_id}/roll"
 
-%h3
-  Add Raider:
-%form{:action=>"/sk/#{@list_id}/add-raider", :method=>"post"}
-  Name: 
-  %input{:type=>"text",:name=>"name"}
-  %input{:type=>"submit", :value=>"Submit"}
+  %h3
+    Add Raider:
+  %form{:action=>"/sk/#{@list_id}/add-raider", :method=>"post"}
+    Name: 
+    %input{:type=>"text",:name=>"name"}
+    %input{:type=>"submit", :value=>"Submit"}
 
 %h3
   Current Raiders:
