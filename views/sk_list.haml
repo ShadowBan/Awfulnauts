@@ -1,0 +1,26 @@
+-if @owner
+  #master-links
+    %h3
+      Master Links:
+    %span
+      Link to List: 
+      %a{:href=>"/sk/list/#{@list_id}"}= "http://www.awfulnauts.com/sk/list/#{@list_id}"
+      %br
+      Admin Link to List: 
+      %a{:href=>"/sk/list/#{@list_id}/#{@owner_id}"}= "http://www.awfulnauts.com/sk/list/#{@list_id}/#{@owner_id}"
+
+%h3
+  Add Raider:
+%form{:action=>"/sk/#{@list_id}/add-raider", :method=>"post"}
+  Name: 
+  %input{:type=>"text",:name=>"name"}
+  %input{:type=>"submit", :value=>"Submit"}
+
+%h3
+  Current Raiders:
+%ul
+  -@list[:raiders].each do |r|
+    %li
+      %span= r[:loot_count]
+      %span= r[:name] 
+      %span= r[:roll]
