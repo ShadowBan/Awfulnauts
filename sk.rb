@@ -9,18 +9,30 @@ class Sk
 
   def self.add_raider(list_id,name)
     list = settings.cache.get(list_id)
-    list[:raiders] << {:roll=>Random.rand(100), :loot_count=>0, :name=> name}
-    list[:raiders] = list[:raiders].sort_by{|a|a[:roll]}
+    raider = {:roll=>Random.rand(100), :loot_count=>0, :name=> name}
+    if already_loot? list
+      list = add_to_looted_list list, raider
+    else
+      list = add_to_new_list list, raider
+    end
+    settings.cache.set(list_id, list, 604800)
+  end
+
+  def self.remove_raider(list_id,name)
+    list = settings.cache.get(list_id)
+    list[:raiders].delete_if{|r| r[:name] == name}
     settings.cache.set(list_id, list, 604800)
   end
   
   def self.get_loot(list_id,name)
     list = settings.cache.get(list_id)
-  end
-
-  def self.remove_raider(list_id,name)
-    list = settings.cache.get(list_id)
-    list[:raiders].delete_if{|r| r[:name]==name}
+    lr = list[:raiders].select{|r| r[:name] == name}.first rescue nil
+    unless lr.nil?
+      list[:raiders].delete(lr)
+      lr[:loot_count] += 1
+      list[:raiders] << lr
+      settings.cache.set(list_id, list, 604800)
+    end
   end
 
   def self.roll_all(list_id)
@@ -34,6 +46,30 @@ class Sk
     list_id = Random.rand(100000)
     settings.cache.set(list_id, list, 604800)
     return list_id, list[:owner_id]
+  end
+
+  private
+
+  def self.already_loot?(list)
+    lc = list[:raiders].select{|r| r[:loot_count] > 0}
+    if lc.count > 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def self.add_to_new_list(list, raider)
+    list[:raiders] << raider
+    list[:raiders] = list[:raiders].sort_by{|a|a[:roll]}
+    list
+  end
+
+  def self.add_to_looted_list(list, raider)
+    noloot = list[:raiders].select{|r| r[:loot_count] == 0}
+    noloot << raider
+    list[:raiders] = (noloot.sort_by{|a|a[:roll]}) + (list[:raiders].delete_if{|r| noloot.include? r})
+    list
   end
 
 end

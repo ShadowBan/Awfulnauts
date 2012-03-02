@@ -21,9 +21,27 @@
 
 %h3
   Current Raiders:
-%ul
+%table
+  %tr
+    %th
+      Loot
+    %th
+      Name
+    %th
+      Roll
+    -if @owner
+      %th
+        Remove
   -@list[:raiders].each do |r|
-    %li
-      %span= r[:loot_count]
-      %span= r[:name] 
-      %span= r[:roll]
+    %tr
+      %td
+        -if @owner
+          %a{:href=>"/sk/#{@list_id}/get-loot/#{r[:name]}"}=r[:loot_count]
+        -else
+          =r[:loot_count]
+      %td= r[:name] 
+      %td= r[:roll]
+      -if @owner
+        %td
+          %a{:href=>"/sk/#{@list_id}/remove-raider/#{r[:name]}"}
+            Remove

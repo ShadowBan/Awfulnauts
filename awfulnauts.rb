@@ -70,6 +70,16 @@ post '/sk/:pub_id/add-raider' do
   redirect back
 end
 
+get '/sk/:pub_id/remove-raider/:name' do
+  Sk.remove_raider(params[:pub_id],params[:name])
+  redirect back
+end
+
+get '/sk/:pub_id/get-loot/:name' do
+  Sk.get_loot(params[:pub_id],params[:name])
+  redirect back
+end
+
 get '/expire' do
   Rss.expire_cache
   redirect '/'
