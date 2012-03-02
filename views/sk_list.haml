@@ -43,20 +43,21 @@
           %td
             %a{:href=>"/sk/#{@list_id}/remove-raider/#{r[:name]}"}
               Remove
-.right
-  %h3
-    %a{:href=>"/sk/list/#{@list_id}/#{@owner_id}?roll=1"}
-      Roll Off Current Raiders
-  -if params[:roll]
-    -names = @list[:raiders].collect{|r|r[:name]}
-    -rolls = names.collect{|n|{:name=>n,:roll=>Random.rand(100)}}.sort_by{|a|a[:roll]} rescue nil
-    %table
-      %tr
-        %th
-          Name
-        %th
-          Roll
-      -rolls.each do |r|
+-if @owner
+  .right
+    %h3
+      %a{:href=>"/sk/list/#{@list_id}/#{@owner_id}?roll=1"}
+        Roll Off Current Raiders
+    -if params[:roll]
+      -names = @list[:raiders].collect{|r|r[:name]}
+      -rolls = names.collect{|n|{:name=>n,:roll=>Random.rand(100)}}.sort_by{|a|a[:roll]} rescue nil
+      %table
         %tr
-          %td= r[:name] 
-          %td= r[:roll]
+          %th
+            Name
+          %th
+            Roll
+        -rolls.each do |r|
+          %tr
+            %td= r[:name] 
+            %td= r[:roll]
