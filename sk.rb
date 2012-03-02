@@ -35,12 +35,6 @@ class Sk
     end
   end
 
-  def self.roll_all(list_id)
-    list = settings.cache.get(list_id)
-    names = list[:raiders].collect{|r|r[:name]}
-    names.collect{|n|{:name=>n,:roll=>Random.rand(100)}}.sort_by{|a|a[:roll]} rescue nil
-  end
-
   def self.create_list
     list = {:raiders=>[],:owner_id=>Random.rand(100000)}
     list_id = Random.rand(100000)

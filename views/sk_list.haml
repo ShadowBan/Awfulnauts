@@ -8,9 +8,6 @@
       %br
       Admin Link to List: 
       %a{:href=>"/sk/list/#{@list_id}/#{@owner_id}"}= "http://www.awfulnauts.com/sk/list/#{@list_id}/#{@owner_id}"
-      %br
-      Roll List: 
-      %a{:href=>"/sk/list/#{@list_id}/#{@owner_id}/roll"}= "http://www.awfulnauts.com/sk/list/#{@list_id}/#{@owner_id}/roll"
 
   %h3
     Add Raider:
@@ -19,29 +16,47 @@
     %input{:type=>"text",:name=>"name"}
     %input{:type=>"submit", :value=>"Submit"}
 
-%h3
-  Current Raiders:
-%table
-  %tr
-    %th
-      Loot
-    %th
-      Name
-    %th
-      Roll
-    -if @owner
-      %th
-        Remove
-  -@list[:raiders].each do |r|
+.left
+  %h3
+    Current Raiders:
+  %table
     %tr
-      %td
-        -if @owner
-          %a{:href=>"/sk/#{@list_id}/get-loot/#{r[:name]}"}=r[:loot_count]
-        -else
-          =r[:loot_count]
-      %td= r[:name] 
-      %td= r[:roll]
+      %th
+        Loot
+      %th
+        Name
+      %th
+        Roll
       -if @owner
+        %th
+          Remove
+    -@list[:raiders].each do |r|
+      %tr
         %td
-          %a{:href=>"/sk/#{@list_id}/remove-raider/#{r[:name]}"}
-            Remove
+          -if @owner
+            %a{:href=>"/sk/#{@list_id}/get-loot/#{r[:name]}"}=r[:loot_count]
+          -else
+            =r[:loot_count]
+        %td= r[:name] 
+        %td= r[:roll]
+        -if @owner
+          %td
+            %a{:href=>"/sk/#{@list_id}/remove-raider/#{r[:name]}"}
+              Remove
+.right
+  %h3
+    %a{:href=>"/sk/list/#{@list_id}/#{@owner_id}?roll=1"}
+      Roll Off Current Raiders
+  -if params[:roll]
+    -names = @list[:raiders].collect{|r|r[:name]}
+    -rolls = names.collect{|n|{:name=>n,:roll=>Random.rand(100)}}.sort_by{|a|a[:roll]} rescue nil
+    %table
+      %tr
+        %th
+          Name
+        %th
+          Roll
+      -rolls.each do |r|
+        %tr
+          %td= r[:name] 
+          %td= r[:roll]
