@@ -5,12 +5,11 @@ class Rss
 
   #### Pod Casts ####
   def self.update_gamebreaker
-    doc = Nokogiri::XML(open("http://feeds.feedburner.com/TheRepublic-TheStarWarsTheOldRepublicPodcast?format=xml"))
+    doc = Nokogiri::XML(open("http://www.gamebreaker.tv/video-game-shows/star-wars-the-old-republic-video/the-republic-swtor-show/feed/"))
     newest = doc.xpath('//item').first
     data = {}
     data[:title] = newest.xpath('title').text
     data[:link] = newest.xpath('link').text
-    data[:image_url] = newest.xpath('blip:picture').text
     data[:pubdate] = Date.parse(newest.xpath('pubDate').text).to_s rescue nil
     data[:last_update] = (Date.today - Date.parse(newest.xpath('pubDate').text)).to_i rescue nil
     settings.cache.set('gamebreaker', data, 3600)
