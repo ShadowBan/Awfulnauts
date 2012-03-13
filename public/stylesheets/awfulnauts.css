@@ -107,3 +107,13 @@ h1{
 .news ul li {
   margin-bottom:5px;
 }
+
+.lists{
+  margin-top:25px;
+  width:100%;
+}
+
+.list{
+  min-height:250px;
+  margin-right:25px;
+}

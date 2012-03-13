@@ -28,6 +28,7 @@ get '/photo-test' do
 end
 
 get '/sk' do
+  @lists = Sk.get_current
   haml :sk
 end
 

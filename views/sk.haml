@@ -1,1 +1,39 @@
-%a{:href=>"/sk/create_list"}= "Create List"
+%p
+  The basics of the system are as follows:
+  %ul
+    %li
+      Players are put in an ordered list, based on a random roll (lowest to highest). Multiple lists may be used.
+    %li
+      When a new player needs to be added to the list, they are "roll in".  This means that they roll agenst the players currently assigned no loot.
+    %li
+      When loot is dropped, the person who wants it and is nearest the top of the list wins the loot and goes to the bottom of the list.
+    %li
+      If no-one wants the item, it is up to the guild to decide what to do with it, or if needed the owner of the list has the ability to roll the whole raid.
+
+%h1
+  %a{:href=>"/sk/create_list"}= "Get Started And Create A List"
+
+
+-unless @lists.empty?
+  .lists
+    %h1
+      Latests Lists:
+    -@lists.each do |key, value|
+      .left.list
+        %table
+          %tr
+            %th
+              Loot
+            %th
+              Name
+            %th
+              Roll
+          -value[:raiders].each do |r|
+            %tr
+              %td
+                =r[:loot_count]
+              %td= r[:name] 
+              %td= r[:roll] 
+        %a{:href=>"/sk/list/#{key}"}
+          Go To List >>
+    .clear

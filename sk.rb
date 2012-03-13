@@ -36,13 +36,28 @@ class Sk
   end
 
   def self.create_list
+    cskl = settings.cache.get("current_sk_lists")
     list = {:raiders=>[],:owner_id=>Random.rand(100000)}
     list_id = Random.rand(100000)
     settings.cache.set(list_id, list, 604800)
+    cskl.nil? ? [list_id] : cskl.push(list_id)
+    settings.cache.set("current_sk_lists",cskl,604800)
     return list_id, list[:owner_id]
   end
 
+  def self.get_current
+    cskl = settings.cache.get("current_sk_lists")
+    cskl = get_sk_lists(cskl)
+    return cskl
+  end
+
   private
+
+  def self.get_sk_lists(cur_lists)
+    lists = settings.cache.get_multi(cur_lists)     
+    settings.cache.set("current_sk_lists",lists.keys,604800)
+    lists
+  end
 
   def self.already_loot?(list)
     lc = list[:raiders].select{|r| r[:loot_count] > 0}
