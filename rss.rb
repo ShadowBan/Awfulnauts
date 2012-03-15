@@ -9,7 +9,7 @@ class Rss
     newest = doc.xpath('//item').first
     data = {}
     data[:title] = newest.xpath('title').text
-    data[:link] = newest.xpath('link').text
+    data[:link] = newest.xpath('link').text 
     data[:pubdate] = Date.parse(newest.xpath('pubDate').text).to_s rescue nil
     data[:last_update] = (Date.today - Date.parse(newest.xpath('pubDate').text)).to_i rescue nil
     settings.cache.set('gamebreaker', data, 3600)
