@@ -1,6 +1,7 @@
 source :gemcutter
-gem "sinatra"
-gem "sinatra-reloader"
+gem 'rails', '3.2'
+gem 'mysql2'
+gem 'jquery-rails'
 
 gem "heroku"
 

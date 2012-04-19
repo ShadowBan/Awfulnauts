@@ -1,12 +1,4 @@
-require 'rubygems'
-require 'sinatra'
-require "sinatra/reloader" if development?
-require 'haml'
-require 'dalli'
-require 'date'
-require './awfulnauts'
-require './rss'
-require './sk'
+# This file is used by Rack-based servers to start the application.
 
-set :cache, Dalli::Client.new
-configure(:production){ run Sinatra::Application }
+require ::File.expand_path('../config/environment',  __FILE__)
+run Awfulnauts::Application
