@@ -1,0 +1,36 @@
+%html
+  %head
+    %link{:rel=>"shortcut icon", :href=>"/images/favicon.ico", :type=>"image/x-icon"}
+    %title Awfulnauts Guild
+    %link{:href=>"/stylesheets/awfulnauts.css", :media=>"screen", :rel=>"stylesheet", :type=>"text/css"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"}
+    %script{:src => "/javascripts/galleria/galleria-1.2.6.min.js"}
+    %script{:src => "/javascripts/galleria/plugins/flickr/galleria.flickr.min.js"}
+  %body
+    #header
+      #logo
+        %pre
+          :preserve
+               _____            _____     .__                        __          
+              /  _  \__  _  ___/ ____\_ __|  |   ____ _____   __ ___/  |_  ______
+             /  /_\  \ \/ \/ /\   __\  |  \  |  /    \\__  \ |  |  \   __\/  ___/
+            /    |    \     /  |  | |  |  /  |_|   |  \/ __ \|  |  /|  |  \___ \ 
+            \____|__  /\/\_/   |__| |____/|____/___|  (____  /____/ |__| /____  >
+                    \/                              \/     \/                 \/  
+      #top-nav
+        %ul
+          %li
+            %a{:href=>"http://www.turntable.fm/awfulnauts_swtor_guild",:target=>"_blank"}="Guild turntable"
+          %li
+            %a{:href=>"http://reddit.awfulnauts.com",:target=>"_blank"}="Guild Reddit"
+          %li
+            %a{:href=>"https://docs.google.com/spreadsheet/ccc?key=0Am_PtHuFO_BXdFcxZlRnLURMdUZMSUtXdk5BcWo3eWc#gid=0",:target=>"_blank"}="Guild Crafting List"
+          %li
+            %a{:href=>"/sk"}="SK Tool"
+
+        .clear
+    #wrap
+      #main-body
+        = yield
+      #footer
+        .ads 

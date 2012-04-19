@@ -1,0 +1,44 @@
+#news-trackers
+  /
+    #guild-news.left
+    %h1="Guild News"
+    #twitter.left.news
+      %h1="Twitter"
+    #reddit.left.news
+      %h1="Reddit"
+    .clear
+
+  #game-news.left
+    #darth.left.news
+      %h1="Darthhater"
+      %ul
+        - @darthhater.each do |n|
+          %li
+            %a{:href=>n[:url]}= n[:title]
+    #dev.right.news
+      %h1="Dev Tracker"
+      %ul
+        -@devtracker[0..9].each do |n|
+          %li
+            %a{:href=>n[:url]}= n[:title]
+    .clear
+
+  #podcasts.right
+    %h1="PodCasts"
+    #the-republic.cast.left
+      %a{:href=>@gamebreaker[:link]}
+        %img{:src => "/images/tr.jpg"}
+      %apan
+        ="Updated: #{@gamebreaker[:last_update]} #{@gamebreaker[:last_update] > 1 ? 'days' : 'day'} ago"
+    #darth-cast.cast.left
+      %a{:href=>@darth_cast[:link]}
+        %img{:src=>@darth_cast[:image_url]}
+      %span
+        ="Updated: #{@darth_cast[:last_update]} #{@darth_cast[:last_update] > 1 ? 'days' : 'day'} ago"
+    .clear
+  .clear
+    
+#guild-cal
+  %h1="Guild Events"
+  %iframe{:frameborder => "0", :height => "600", :scrolling => "no", :src => "https://www.google.com/calendar/embed?showTitle=0&showNav=0&showPrint=0&showTabs=0&showCalendars=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=hmfm88qi2pf834264ie43ink14%40group.calendar.google.com&color=%232F6309&ctz=America%2FLos_Angeles", :style => " border-width:0 ", :width => "960"}
+  
