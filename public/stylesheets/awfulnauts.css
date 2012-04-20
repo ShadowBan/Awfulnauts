@@ -1,0 +1,119 @@
+body{
+  position:relative;
+  margin: 0;
+	padding: 0;
+	height: 0;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background: #E0E4CC;
+	height:100%;
+}
+
+#wrap{
+  margin: 0 auto;
+  margin-bottom:35px;
+  width:960px;
+  min-height:500px;
+  background: #E0E4CC;
+}
+
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
+}
+
+.clear{
+  clear:both;
+}
+
+#header{
+  width:100%;
+  background: #A7DBD8;
+  font-weight: bold;
+}
+
+#logo{
+  margin: 0 auto;
+  width:485px;
+} 
+
+.container{
+  margin: 0 auto;
+  width:638px;
+  min-height:350px;
+  background:#FFFFFF;
+  //margin-top:250px;
+}
+
+#footer{
+  margin: 0 auto;
+  width:638px;
+  background: #FFFFFF;
+}
+
+#header #top-nav{
+  background-color:#F38630;
+}
+
+#header #top-nav ul{
+  list-style:none;
+}
+
+#header #top-nav li{
+  float:left;
+  margin-right:25px;
+}
+
+#header #top-nav li a{
+  text-decoration:none;
+  font-weight:bold;
+  font-size:20px;
+  color:#000000;
+}
+
+#podcasts{
+  width:145px;
+}
+
+#podcasts .cast{
+  margin-bottom: 10px;
+}
+
+#guild-news{
+  width:780px;
+  margin-left:15px;
+}
+#game-news{
+  width:780px;
+  margin-left:15px; 
+}
+
+h1{
+  margin-top: 0;
+  margin-bottom: 5px;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.news ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+} 
+.news ul li {
+  margin-bottom:5px;
+}
+
+.lists{
+  margin-top:25px;
+  width:100%;
+}
+
+.list{
+  min-height:250px;
+  margin-right:25px;
+}

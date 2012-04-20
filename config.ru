@@ -1,4 +1,12 @@
-# This file is used by Rack-based servers to start the application.
+require 'rubygems'
+require 'sinatra'
+require "sinatra/reloader" if development?
+require 'haml'
+require 'dalli'
+require 'date'
+require './awfulnauts'
+require './rss'
+require './sk'
 
-require ::File.expand_path('../config/environment',  __FILE__)
-run Awfulnauts::Application
+set :cache, Dalli::Client.new
+configure(:production){ run Sinatra::Application }
