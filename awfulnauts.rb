@@ -2,7 +2,7 @@
 
 ### CONTROLLER ACTIONS
 
-#layout :layout
+layout :layout
 
 #Home Page
 get '/' do
