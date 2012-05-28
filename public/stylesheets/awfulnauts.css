@@ -1,13 +1,13 @@
 body{
   position:relative;
   margin: 0;
-	padding: 0;
-	height: 0;
-	border: none;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	background: #E0E4CC;
-	height:100%;
+  padding: 0;
+  height: 0;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  background: #E0E4CC;
+  height:100%;
 }
 
 #wrap{
